@@ -8,10 +8,6 @@ namespace MssqlMonitorLib.Logic
 {
     public class ManagerBase
     {
-        public enum ORDER_BY_OPTIONS {
-            ASC,
-            DESC
-        }
 
         public string[] columns = null;
         protected DAL dal;
@@ -41,6 +37,16 @@ namespace MssqlMonitorLib.Logic
             }
 
             return response;
+        }
+
+        protected DBresponse fillTable(string sql) {
+            return fillColumns(dal.fillAdapter(sql));
+        }
+
+        protected string createQuery(string statement, string where, string orderBy) {
+            string sql = statement + " " + where + " " + orderBy;
+            sql = sql.Trim();
+            return sql;
         }
     }
 }
