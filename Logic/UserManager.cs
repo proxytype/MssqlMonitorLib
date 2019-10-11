@@ -24,7 +24,7 @@ namespace MssqlMonitorLib.Logic
         /// <returns></returns>
         public DBresponse getUsers(string orderBy)
         {
-            string sql = createQuery(Resources.DB_ALL_USERS, string.Empty, orderBy);
+            string sql = createQuery(Queries.QUERY_GENERIC_SELECT, Tables.MASTER_SYS_SERVER_PRINCIPALS, string.Empty, orderBy);
             return fillTable(sql);
         }
 
@@ -35,7 +35,7 @@ namespace MssqlMonitorLib.Logic
         /// <param name="orderBy">optional will be ignored if empty</param>
         /// <returns></returns>
         public DBresponse getUsers(string where, string orderBy) {
-            string sql = createQuery(Resources.DB_ALL_USERS, where, orderBy);
+            string sql = createQuery(Queries.QUERY_GENERIC_SELECT, Tables.MASTER_SYS_SERVER_PRINCIPALS, where, orderBy);
             return fillTable(sql);
          }
     }

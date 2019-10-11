@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MssqlMonitorLib.Utilities
+﻿namespace MssqlMonitorLib.Utilities
 {
     public class DBresponse
     {

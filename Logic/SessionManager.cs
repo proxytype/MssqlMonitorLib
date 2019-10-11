@@ -24,7 +24,7 @@ namespace MssqlMonitorLib.Logic
         /// <returns></returns>
         public DBresponse getSessions(string orderBy)
         {
-            string sql = createQuery(Resources.DB_ALL_SESSIONS, string.Empty, orderBy);
+            string sql = createQuery(Queries.QUERY_GENERIC_SELECT, Tables.MASTER_SYS_DM_EXEC_SESSIONS, string.Empty, orderBy);
             return fillTable(sql);
         }
 
@@ -35,10 +35,9 @@ namespace MssqlMonitorLib.Logic
         /// <param name="orderBy">optional will be ignored if empty</param>
         /// <returns></returns>
         public DBresponse getSessions(string where, string orderBy) {
-            string sql = createQuery(Resources.DB_ALL_SESSIONS, where, orderBy);
+            string sql = createQuery(Queries.QUERY_GENERIC_SELECT, Tables.MASTER_SYS_DM_EXEC_SESSIONS, where, orderBy);
             return fillTable(sql);
         }
-
 
     }
 }

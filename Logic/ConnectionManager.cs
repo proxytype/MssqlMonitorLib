@@ -1,9 +1,5 @@
 ﻿using MssqlMonitorLib.Properties;
 using MssqlMonitorLib.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Text;
 
 namespace MssqlMonitorLib.Logic
 {
@@ -24,18 +20,18 @@ namespace MssqlMonitorLib.Logic
         /// <param name="orderBy"></param>
         /// <returns></returns>
         public DBresponse getConnections(string orderBy) {
-            string sql = createQuery(Resources.DB_ALL_CONNECTIONS, string.Empty, orderBy);
+            string sql = createQuery(Queries.QUERY_GENERIC_SELECT, Tables.MASTER_SYS_DM_EXEC_CONNECTIONS, string.Empty, orderBy);
             return fillTable(sql);
         }
 
         /// <summary>
-        /// retrun all known database users by where condition
+        /// retrun all known database connections by where condition
         /// </summary>
         /// <param name="where"></param>
         /// <param name="orderBy"></param>
         /// <returns></returns>
         public DBresponse getConnections(string where, string orderBy) {
-            string sql = createQuery(Resources.DB_ALL_CONNECTIONS, where, orderBy);
+            string sql = createQuery(Queries.QUERY_GENERIC_SELECT, Tables.MASTER_SYS_DM_EXEC_CONNECTIONS, where, orderBy);
             return fillTable(sql);
         }
 

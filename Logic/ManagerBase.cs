@@ -1,13 +1,12 @@
 ﻿using MssqlMonitorLib.Utilities;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
 namespace MssqlMonitorLib.Logic
 {
     public class ManagerBase
     {
+        private const string REPLACE_QUERY_TABLE = "[TABLE]";
 
         public string[] columns = null;
         protected DAL dal;
@@ -43,8 +42,8 @@ namespace MssqlMonitorLib.Logic
             return fillColumns(dal.fillAdapter(sql));
         }
 
-        protected string createQuery(string statement, string where, string orderBy) {
-            string sql = statement + " " + where + " " + orderBy;
+        protected string createQuery(string select, string table, string where, string orderBy) {
+            string sql = select.Replace(REPLACE_QUERY_TABLE, table) + " " + where + " " + orderBy;
             sql = sql.Trim();
             return sql;
         }
