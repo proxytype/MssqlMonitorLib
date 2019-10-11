@@ -12,7 +12,7 @@ namespace MssqlMonitorLib.Logic
         /// create instance pass dal to base layer
         /// </summary>
         /// <param name="_dal">new instance of dal object</param>
-        public DatabaseManager(DAL _dal) : base(_dal)
+        public DatabaseManager(DAL _dal) : base(_dal, Tables.MASTER_SYS_DATABASES)
         {
 
         }

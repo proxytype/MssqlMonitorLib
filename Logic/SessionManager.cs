@@ -12,7 +12,7 @@ namespace MssqlMonitorLib.Logic
         /// create instance pass dal to base layer
         /// </summary>
         /// <param name="_dal">new instance of dal object</param>
-        public SessionManager(DAL _dal) : base(_dal)
+        public SessionManager(DAL _dal) : base(_dal, Tables.MASTER_SYS_DM_EXEC_SESSIONS)
         {
 
         }

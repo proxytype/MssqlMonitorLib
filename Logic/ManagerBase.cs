@@ -1,4 +1,5 @@
-﻿using MssqlMonitorLib.Utilities;
+﻿using MssqlMonitorLib.Properties;
+using MssqlMonitorLib.Utilities;
 using System;
 using System.Data;
 
@@ -11,12 +12,27 @@ namespace MssqlMonitorLib.Logic
         public string[] columns = null;
         protected DAL dal;
 
-        public ManagerBase(DAL _dal)
+        public ManagerBase(DAL _dal, string table)
         {
             dal = _dal;
+
+            string sql = createQuery(Queries.QUERY_GENERIC_TOP_ONE_SELECT, table, string.Empty, string.Empty);
+            DBresponse response = dal.fillAdapter(sql);
+
+            if (!response.isValid)
+            {
+                throw new Exception(response.exception);
+            }
+            else {
+                response = fillColumns(response);
+                if (!response.isValid)
+                {
+                    throw new Exception(response.exception);
+                }
+            }
         }
 
-        protected DBresponse fillColumns(DBresponse response) {
+        private DBresponse fillColumns(DBresponse response) {
 
             if (response.isValid && columns == null) {
                 try
@@ -39,7 +55,7 @@ namespace MssqlMonitorLib.Logic
         }
 
         protected DBresponse fillTable(string sql) {
-            return fillColumns(dal.fillAdapter(sql));
+            return dal.fillAdapter(sql);
         }
 
         protected string createQuery(string select, string table, string where, string orderBy) {

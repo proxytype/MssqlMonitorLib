@@ -118,18 +118,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="MASTER_SYS_DATABASES" xml:space="preserve">
-    <value>master.sys.databases</value>
+    <value>sys.databases</value>
   </data>
   <data name="MASTER_SYS_DM_EXEC_CONNECTIONS" xml:space="preserve">
-    <value>master.sys.dm_exec_connections</value>
+    <value>sys.dm_exec_connections</value>
   </data>
   <data name="MASTER_SYS_DM_EXEC_REQUESTS" xml:space="preserve">
-    <value>master.sys.dm_exec_requests</value>
+    <value>sys.dm_exec_requests</value>
   </data>
   <data name="MASTER_SYS_DM_EXEC_SESSIONS" xml:space="preserve">
-    <value>master.sys.dm_exec_sessions</value>
+    <value>sys.dm_exec_sessions</value>
   </data>
   <data name="MASTER_SYS_SERVER_PRINCIPALS" xml:space="preserve">
-    <value>master.sys.server_principals</value>
+    <value>sys.server_principals</value>
   </data>
 </root>

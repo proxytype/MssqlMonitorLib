@@ -120,4 +120,7 @@
   <data name="QUERY_GENERIC_SELECT" xml:space="preserve">
     <value>select * from [TABLE]</value>
   </data>
+  <data name="QUERY_GENERIC_TOP_ONE_SELECT" xml:space="preserve">
+    <value>select top 1 * from [TABLE]</value>
+  </data>
 </root>

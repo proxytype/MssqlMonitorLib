@@ -61,7 +61,7 @@ namespace MssqlMonitorLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to master.sys.databases.
+        ///   Looks up a localized string similar to sys.databases.
         /// </summary>
         internal static string MASTER_SYS_DATABASES {
             get {
@@ -70,7 +70,7 @@ namespace MssqlMonitorLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to master.sys.dm_exec_connections.
+        ///   Looks up a localized string similar to sys.dm_exec_connections.
         /// </summary>
         internal static string MASTER_SYS_DM_EXEC_CONNECTIONS {
             get {
@@ -79,7 +79,7 @@ namespace MssqlMonitorLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to master.sys.dm_exec_requests.
+        ///   Looks up a localized string similar to sys.dm_exec_requests.
         /// </summary>
         internal static string MASTER_SYS_DM_EXEC_REQUESTS {
             get {
@@ -88,7 +88,7 @@ namespace MssqlMonitorLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to master.sys.dm_exec_sessions.
+        ///   Looks up a localized string similar to sys.dm_exec_sessions.
         /// </summary>
         internal static string MASTER_SYS_DM_EXEC_SESSIONS {
             get {
@@ -97,7 +97,7 @@ namespace MssqlMonitorLib.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to master.sys.server_principals.
+        ///   Looks up a localized string similar to sys.server_principals.
         /// </summary>
         internal static string MASTER_SYS_SERVER_PRINCIPALS {
             get {

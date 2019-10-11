@@ -68,5 +68,14 @@ namespace MssqlMonitorLib.Properties {
                 return ResourceManager.GetString("QUERY_GENERIC_SELECT", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to select top 1 * from [TABLE].
+        /// </summary>
+        internal static string QUERY_GENERIC_TOP_ONE_SELECT {
+            get {
+                return ResourceManager.GetString("QUERY_GENERIC_TOP_ONE_SELECT", resourceCulture);
+            }
+        }
     }
 }
