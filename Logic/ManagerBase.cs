@@ -37,7 +37,7 @@ namespace MssqlMonitorLib.Logic
             if (response.isValid && columns == null) {
                 try
                 {
-                    DataTable table = (DataTable)response.data;
+                    DataTable table = response.table;
                     columns = new string[table.Columns.Count];
                     for (int i = 0; i < table.Columns.Count; i++)
                     {
