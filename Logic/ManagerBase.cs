@@ -9,7 +9,7 @@ namespace MssqlMonitorLib.Logic
     {
         private const string REPLACE_QUERY_TABLE = "[TABLE]";
 
-        public string[] columns = null;
+        public DataColumnCollection columns = null;
         protected DAL dal;
 
         public ManagerBase(DAL _dal, string table)
@@ -38,11 +38,7 @@ namespace MssqlMonitorLib.Logic
                 try
                 {
                     DataTable table = response.table;
-                    columns = new string[table.Columns.Count];
-                    for (int i = 0; i < table.Columns.Count; i++)
-                    {
-                        columns[i] = table.Columns[i].ColumnName;
-                    }
+                    columns = table.Columns;
                 }
                 catch (Exception ex)
                 {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -27,7 +28,7 @@ namespace MssqlMonitorLib.Utilities
                 command.CommandText = sql;
                 adapter.Fill(temptable);
                 temptable.TableName = "dd";
-                response.table = temptable;
+                response.table = fixDatatableType(temptable);
             }
             catch (Exception ex)
             {
@@ -54,7 +55,7 @@ namespace MssqlMonitorLib.Utilities
                 command.CommandType = CommandType.StoredProcedure;
                 adapter.Fill(tbl);
                 tbl.TableName = "dd";
-                response.table = tbl;
+                response.table = fixDatatableType(tbl);
             }
             catch (Exception ex)
             {
@@ -66,6 +67,59 @@ namespace MssqlMonitorLib.Utilities
                 command.Parameters.Clear();
             }
             return response;
+        }
+
+        private DataTable fixDatatableType(DataTable input) {
+
+            List<DataColumn> overwriteColumnIndex = new List<DataColumn>();
+            List<string> addedColumns = new List<string>();
+
+            for (int i = 0; i < input.Columns.Count; i++)
+            {
+                if (input.Columns[i].DataType == typeof(byte[])) {
+
+                    overwriteColumnIndex.Add(input.Columns[i]);
+
+                    string newColumnName = input.Columns[i].ColumnName + "_str";
+
+                    addedColumns.Add(newColumnName);
+
+                    DataColumn dataColumn = new DataColumn(newColumnName, typeof(string));
+                    input.Columns.Add(dataColumn);
+                }
+            }
+
+
+            if (overwriteColumnIndex.Count != 0) {
+                for (int z = 0; z < input.Rows.Count; z++)
+                {
+                    DataRow row = input.Rows[z];
+                    for (int m = 0; m < overwriteColumnIndex.Count; m++)
+                    {
+                        if (row[overwriteColumnIndex[m]] != DBNull.Value) {
+                            row[addedColumns[m]] = ByteArrayToHexString((byte[])row[overwriteColumnIndex[m]]);
+                        }
+                        
+                    }
+                }
+            }
+
+            return input;
+        }
+
+        private string ByteArrayToHexString(byte[] p)
+        {
+            byte b;
+            char[] c = new char[p.Length * 2 + 2];
+            c[0] = '0'; c[1] = 'x';
+            for (int y = 0, x = 2; y < p.Length; ++y, ++x)
+            {
+                b = ((byte)(p[y] >> 4));
+                c[x] = (char)(b > 9 ? b + 0x37 : b + 0x30);
+                b = ((byte)(p[y] & 0xF));
+                c[++x] = (char)(b > 9 ? b + 0x37 : b + 0x30);
+            }
+            return new string(c);
         }
     }
 
